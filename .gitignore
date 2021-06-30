@@ -1,0 +1,9 @@
+**/*.csv
+**/*.html
+data/CR
+mapper
+**/*.tab
+**/*.fastq.gz
+**/*checkpoint*
+**/*.loom
+**/*.cpython-38.pyc
