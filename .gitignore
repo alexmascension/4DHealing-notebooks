@@ -7,3 +7,4 @@ mapper
 **/*checkpoint*
 **/*.loom
 **/*.cpython-38.pyc
+**/*.h5
