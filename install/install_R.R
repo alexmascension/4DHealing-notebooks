@@ -10,4 +10,4 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("multtest")
 
 devtools::install_github('Seurat')
-devtools::install_github('constantAmateur/SoupX',ref='devel')
+BiocManager::install("scran")
