@@ -8,3 +8,4 @@ mapper
 **/*.loom
 **/*.cpython-38.pyc
 **/*.h5
+**/*.h5ad
