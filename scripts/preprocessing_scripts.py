@@ -122,16 +122,11 @@ def apply_norm(adata, size_factors):
     
     #Normalize adata 
     adata.X /= adata.obs['size_factors'].values[:,None]
-    sc.pp.log1p(adata)
-    
-    adata.X = np.asarray(adata.X.todense())
     
     return adata
 
 
 def adata_preprocessing(adata, sample, hvg_min_mean, hvg_max_mean, hvg_min_disp, seed, leiden_resolution, dir_adata_save, cmap, palette):
-    sc.pp.highly_variable_genes(adata, min_mean=hvg_min_mean, max_mean=hvg_max_mean, min_disp=hvg_min_disp)
-    
     sc.tl.pca(adata)
     sc.pp.neighbors(adata, metric='cosine', n_neighbors=int(0.5 * len(adata) ** 0.5))
     sc.tl.umap(adata, random_state = seed)
