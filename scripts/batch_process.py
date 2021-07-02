@@ -2,6 +2,7 @@ import pandas as pd
 import scipy
 import numpy as np
 import scanpy as sc
+import scanpy.external as sce
 from matplotlib import pyplot as plt
 
 def batch_process(adata_batch, remove_extreme_cells=True, scaling=True):
@@ -57,3 +58,15 @@ def batch_process(adata_batch, remove_extreme_cells=True, scaling=True):
                 axs[0].plot(np.arange(len_batch)/len_batch, np.log10(np.sort(dict_counts_before[batch])), label=batch)
                 axs[1].plot(np.arange(len_batch)/len_batch, np.log10(np.sort(dict_counts_after[batch])))
             axs[0].legend()
+            
+            
+def preprocess_adata_sub(adata_sub, resolution, n_HVG, min_dist=0.8, n_comps=50, seed=10): # MAKE THIS ARGUMENTS COMPULSORY!
+    sc.pp.highly_variable_genes(adata_sub, n_top_genes=n_HVG)
+    sc.pl.highly_variable_genes(adata_sub)
+    sc.pp.pca(adata_sub, n_comps=n_comps)
+    if 'donor' in adata_sub.obs:
+        sce.pp.bbknn(adata_sub, metric='angular', batch_key='donor')
+    else:
+        sc.pp.neighbors(adata_sub, metric='cosine')
+    sc.tl.umap(adata_sub, random_state=seed, min_dist=min_dist)
+    sc.tl.leiden(adata_sub, random_state=seed, resolution=resolution)
