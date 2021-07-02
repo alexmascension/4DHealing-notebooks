@@ -37,3 +37,4 @@ dependencies:
   - bbknn==1.4.0
   - umap-learn==0.4.6
   - scrublet==0.2.3
+  - cellassign==0.0.1
