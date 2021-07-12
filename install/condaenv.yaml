@@ -14,7 +14,7 @@ dependencies:
   - seaborn=0.11.1
   - nb_conda=2.2.1
   - jupyter_contrib_nbextensions=0.5.1
-  - jupyer=1.0.0
+  - jupyter=1.0.0
   - ipywidgets=7.6.3
   - ipyparallel=6.3.0
   - hdf5=1.10.4
